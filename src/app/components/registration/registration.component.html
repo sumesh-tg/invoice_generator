@@ -63,45 +63,73 @@
   
           <div class="card bg-glass">
             <div class="card-body px-4 py-5 px-md-5">
-              <form>
+              <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" />
+                      <input type="text" formControlName="first_name" id="form3Example1" class="form-control" />
                       <label class="form-label" for="form3Example1">First name</label>
+                      <small *ngIf="registrationForm.controls['first_name'].errors?.['required']">First name is required.</small>
+                      <small *ngIf="registrationForm.controls['first_name'].errors?.['minlength']">First name must be at least 3 characters long.</small>
+                      <small *ngIf="registrationForm.controls['first_name'].errors?.['maxlength']">First name cannot be longer than 20 characters.</small>
+                      <small *ngIf="registrationForm.controls['first_name'].errors?.['pattern']">First name can contain letters, numbers, and underscores only.</small>
+     
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div data-mdb-input-init class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
+                      <input type="text" formControlName="last_name" id="form3Example2" class="form-control" />
                       <label class="form-label" for="form3Example2">Last name</label>
+                      <small *ngIf="registrationForm.controls['last_name'].errors?.['required']">Last name is required.</small>
+                      <small *ngIf="registrationForm.controls['last_name'].errors?.['minlength']">Last name must be at least 3 characters long.</small>
+                      <small *ngIf="registrationForm.controls['last_name'].errors?.['maxlength']">Last name cannot be longer than 20 characters.</small>
+                      <small *ngIf="registrationForm.controls['first_name'].errors?.['pattern']">Last name can contain letters, numbers, and underscores only.</small>
+     
                     </div>
+                  </div>
+                </div>
+
+                <!-- Mobile Number input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input id="phone_number" formControlName="phone_number" type="text" class="form-control" />
+                  <label class="form-label" for="phone_number">Phone Number</label>
+                  <div *ngIf="registrationForm.controls['phone_number'].invalid && registrationForm.controls['phone_number'].touched">
+                    <small *ngIf="registrationForm.controls['phone_number'].errors?.['required']">Phone Number is required.</small>
+                    <!-- <small *ngIf="registrationForm.controls['phone_number'].errors?.['phone_number']">Invalid Phone Number.</small> -->
                   </div>
                 </div>
   
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
+                  <input id="email" formControlName="email" type="email" class="form-control" />
                   <label class="form-label" for="form3Example3">Email address</label>
+                  <div *ngIf="registrationForm.controls['email'].invalid && registrationForm.controls['email'].touched">
+                    <small *ngIf="registrationForm.controls['email'].errors?.['required']">Email is required.</small>
+                    <small *ngIf="registrationForm.controls['email'].errors?.['email']">Invalid email address.</small>
+                  </div>
                 </div>
   
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
+                  <input id="password" formControlName="password" type="password" class="form-control" />
                   <label class="form-label" for="form3Example4">Password</label>
+                  <small *ngIf="registrationForm.controls['password'].errors?.['required']">Password is required.</small>
+                  <small *ngIf="registrationForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters long.</small>
+                  <small *ngIf="registrationForm.controls['password'].errors?.['pattern']">Password must include uppercase, lowercase, number, and special character.</small>
+                
                 </div>
   
                 <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
+                <!-- <div class="form-check d-flex justify-content-center mb-4">
                   <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
                   <label class="form-check-label" for="form2Example33">
                     Subscribe to our newsletter
                   </label>
-                </div>
+                </div> -->
   
                 <!-- Submit button -->
-                <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                <button type="submit" [disabled]="registrationForm.invalid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
                   Sign up
                 </button>
   

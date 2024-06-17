@@ -19,4 +19,8 @@ export class DashboardComponent implements OnInit {
     
   }
 
+  onActivate(event:any):void{
+
+  }
+
 }

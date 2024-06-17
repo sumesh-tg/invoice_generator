@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EncryptionService } from 'src/app/services/encryption.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   email: any;
   phone: any;
 
-  constructor(private encryptionService: EncryptionService) {
+  constructor(private encryptionService: EncryptionService,private router: Router) {
 
   }
 
@@ -25,6 +26,11 @@ export class HeaderComponent implements OnInit {
       this.email = data.email;
       this.phone = data.phoneNumber;
     }
+  }
+
+  handleSignOut():void{
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 
 }

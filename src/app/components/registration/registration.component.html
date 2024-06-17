@@ -129,7 +129,7 @@
                 </div> -->
   
                 <!-- Submit button -->
-                <button type="submit" [disabled]="registrationForm.invalid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                <button type="submit" [disabled]="registrationForm.invalid || clicked" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
                   Sign up
                 </button>
   

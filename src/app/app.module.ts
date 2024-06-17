@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import 'firebase/compat/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BodyComponent } from './components/dashboard/body/body.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './components/dashboard/footer/footer.component';
 import { HeaderComponent } from './components/dashboard/header/header.component';
@@ -18,6 +17,9 @@ import { WidgetReportsComponent } from './components/dashboard/widgets/widget-re
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/dashboard/body/home/home.component';
+import { CustomerComponent } from './components/dashboard/body/customer/customer.component';
+import { ProductsComponent } from './components/dashboard/body/products/products.component';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    BodyComponent,
     RegistrationComponent,
     CalendarComponent,
     WidgetPurchaseHistoryComponent,
     WidgetActivityComponent,
     WidgetPendingInvoicesComponent,
     WidgetRecentCustomersComponent,
-    WidgetReportsComponent
+    WidgetReportsComponent,
+    HomeComponent,
+    CustomerComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

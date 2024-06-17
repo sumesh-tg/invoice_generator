@@ -8,6 +8,8 @@ import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './components/dashboard/body/home/home.component';
 import { CustomerComponent } from './components/dashboard/body/customer/customer.component';
 import { ProductsComponent } from './components/dashboard/body/products/products.component';
+import { CreateInvoiceComponent } from './components/dashboard/body/create-invoice/create-invoice.component';
+import { ListInvoiceComponent } from './components/dashboard/body/list-invoice/list-invoice.component';
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -15,6 +17,8 @@ const routes: Routes = [
     {path:"",component:HomeComponent, pathMatch: "full"},
     {path:"customer",component:CustomerComponent},
     {path:"products",component:ProductsComponent},
+    {path:"create-invoice",component:CreateInvoiceComponent},
+    {path:"list-invoice",component:ListInvoiceComponent},
   ]},
   { path: "login", component: LoginComponent },
   { path: "registration", component: RegistrationComponent },

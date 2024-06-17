@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/dashboard/body/home/home.component';
 import { CustomerComponent } from './components/dashboard/body/customer/customer.component';
 import { ProductsComponent } from './components/dashboard/body/products/products.component';
+import { CreateInvoiceComponent } from './components/dashboard/body/create-invoice/create-invoice.component';
+import { ListInvoiceComponent } from './components/dashboard/body/list-invoice/list-invoice.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ProductsComponent } from './components/dashboard/body/products/products
     WidgetReportsComponent,
     HomeComponent,
     CustomerComponent,
-    ProductsComponent
+    ProductsComponent,
+    CreateInvoiceComponent,
+    ListInvoiceComponent
   ],
   imports: [
     BrowserModule,

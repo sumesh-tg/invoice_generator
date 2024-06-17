@@ -1,1 +1,72 @@
-<p>customer works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Customer List</h5>
+                <p>The Existing Customer Details Are Shown Here.</p>
+
+                <table class="table">
+                    <caption>List of users</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="custom-control custom-checkbox form-group">
+                                    <input type="checkbox" class="custom-control-input" id="mail1">
+                                     <!-- [(ngModel)]="selectedAllChkBox" (change)="selectAllVendors();"> -->
+                                    <label class="custom-control-label" for="mail1"></label>
+                                </div>
+                            </th>
+                            <th scope="col">logo</th>
+                            <th scope="col">Name</th>
+
+                            <th scope="col">Phone</th>
+
+                            <th scope="col">Email</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of customersList">
+                            <td>
+                                <div class="custom-control custom-checkbox form-group">
+                                    <input type="checkbox" class="custom-control-input" id="{{customer.id}}" >
+                                    <!-- [(ngModel)]="customer.selected"> -->
+                                    <label class="custom-control-label" for="{{customer.id}}"></label>
+                                </div>
+                            </td>
+                            <th scope="row"><img src="{{customer.imageUrl}}" width="100"></th>
+
+                            <td>{{customer.name}} <br>
+                                
+                                {{customer.address}}<br>
+                                <!-- {{vendor.email}}<br> -->
+                                <!-- {{vendor.domain}} -->
+                            </td>
+
+                            <td>{{ customer.phone }}</td>
+
+                            <td>{{customer.email}}</td>
+                            <td>{{customer.id}}</td>
+                            <td>{{customer.status}}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" (click)="deactivateCustomer(customer)">Activate/De-activate</a>
+                                        <a class="dropdown-item"(click)="deleteCustomer(customer)">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

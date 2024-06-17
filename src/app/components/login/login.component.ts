@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UsersService,private router: Router,private encryptionService:EncryptionService) {
+  constructor(private fb: FormBuilder, private userService: UsersService, private router: Router, private encryptionService: EncryptionService) {
     this.loginForm = this.fb.group({
       password: ['', [Validators.required]],
       username: ['', [Validators.required]]
@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
         if (response != null) {
           console.log("Login success!");
           let encryptedData = this.encryptionService.encrypt(JSON.stringify(response));
-          sessionStorage.setItem("auth_info",encryptedData);      
+          sessionStorage.setItem("auth_info", encryptedData);
           this.router.navigate(['/dashboard']);
-        }else{
+        } else {
           console.log("Login failed!");
         }
       });

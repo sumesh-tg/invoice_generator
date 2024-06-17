@@ -9,9 +9,9 @@ import { EncryptionService } from 'src/app/services/encryption.service';
 })
 export class SidebarComponent implements OnInit {
 
-  name:any;
-  email:any;
-  phone:any;
+  name: any;
+  email: any;
+  phone: any;
 
   constructor(private encryptionService: EncryptionService) {
 
@@ -22,9 +22,9 @@ export class SidebarComponent implements OnInit {
     if (authInfo) {
       let decryptedData = this.encryptionService.decrypt(authInfo);
       let data = JSON.parse(decryptedData);
-      this.name=data.firstName+" "+data.lastName;
-      this.email=data.email;
-      this.phone=data.phoneNumber;
+      this.name = data.firstName + " " + data.lastName;
+      this.email = data.email;
+      this.phone = data.phoneNumber;
     }
   }
 

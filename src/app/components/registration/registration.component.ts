@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private fb: FormBuilder,private usersService:UsersService,private encryptionService:EncryptionService) {
     this.registrationForm = this.fb.group({
       first_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9_]+$/)]],
-      last_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9_]+$/)]],
+      last_name: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(20), Validators.pattern(/^[a-zA-Z0-9_]+$/)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       phone_number : ['',[Validators.required, Validators.minLength(10),Validators.maxLength(10) ,Validators.pattern(/^[0-9]*$/)]]
@@ -38,18 +38,25 @@ export class RegistrationComponent implements OnInit {
       let password = this.registrationForm.value.password;
       let email = this.registrationForm.value.email;
       let phoneNumber = this.registrationForm.value.phone_number;
-      this.registrationModel =  {firstName:firstName,email:email ,password:password,phoneNumber:phoneNumber,lastName:lastName};
-      this.usersService.createUser(this.registrationModel).then(response =>{
-        alert('User registered successfully!');
-        console.log("Registered Data :: => ",response);
-        this.resetForm();
+      this.usersService.checkUsernameExists(email,phoneNumber).then(userData=>{
+        if(!userData){
+          this.registrationModel =  {firstName:firstName,email:email ,password:password,phoneNumber:phoneNumber,lastName:lastName};
+          this.usersService.createUser(this.registrationModel).then(response =>{
+            alert('User registered successfully!');
+            console.log("Registered Data :: => ",response);
+            this.resetForm();
+          });
+    
+          // Test Encryption
+          let encryptedData=this.encryptionService.encrypt(JSON.stringify(this.registrationModel));
+          console.log("Encrypted data => ",encryptedData);
+          let decryptedData = this.encryptionService.decrypt(encryptedData);
+          console.log("Decrypted data => ",decryptedData);
+        }else{
+          console.log("User exists");
+        }
       });
 
-      // Test Encryption
-      let encryptedData=this.encryptionService.encrypt(JSON.stringify(this.registrationModel));
-      console.log("Encrypted data => ",encryptedData);
-      let decryptedData = this.encryptionService.decrypt(encryptedData);
-      console.log("Decrypted data => ",decryptedData);
       
       
       

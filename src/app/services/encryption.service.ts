@@ -6,8 +6,8 @@ import * as CryptoJS from 'crypto-js';
 })
 export class EncryptionService {
 
-  private key = CryptoJS.enc.Utf8.parse('1234567890123456'); // Your secret key (must be 16, 24, or 32 characters long for AES)
-  private iv = CryptoJS.enc.Utf8.parse('1234567890123456'); // Your initialization vector
+  private key = CryptoJS.enc.Utf8.parse('rNtayWLstoHBw73Z'); // Your secret key (must be 16, 24, or 32 characters long for AES)
+  private iv = CryptoJS.enc.Utf8.parse('gkg1pXcau9FJ69gn'); // Your initialization vector
 
 
   constructor() { }
